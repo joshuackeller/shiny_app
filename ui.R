@@ -1,24 +1,23 @@
 
 ui <- navbarPage(title = 'Patent Analytics',
-  tabPanel(title = "Landing",
-           fluidPage(
-             h1('Landing Page')
-           )),
+  # tabPanel(title = "Landing",
+  #          fluidPage(
+  #            h1('Landing Page')
+  #          )),
   tabPanel(title = 'First',
     fluidPage(
       h1('First'),
-      tabsetPanel(
-        tabPanel(title = 'Inputs',
-                 wellPanel(
-                   textInput(inputId = 'first_input', label = 'First Input', width = '200px', placeholder = 'Enter text here'),
-                   textInput(inputId = 'second_input', label = 'Second Input', width = '200px', placeholder = 'Enter text here'),
-                   textInput(inputId = 'third_input', label = 'Third Input', width = '200px', placeholder = 'Enter text here'),
-                   actionButton(inputId = "my_button", label = "Button")
-                 )),
-        tabPanel(title = 'Outputs',
-                 wellPanel(
-                   plotlyOutput(outputId = 'my_output')
-                 )),
+      sidebarLayout(
+        sidebarPanel(
+          selectInput(inputId = "cpc_select", label = "Select a CPC code:", choices = distinct_cpc_codes),
+          textInput(inputId = 'first_input', label = 'First Input', width = '200px', placeholder = 'Enter text here'),
+          textInput(inputId = 'third_input', label = 'Third Input', width = '200px', placeholder = 'Enter text here'),
+          actionButton(inputId = "my_button", label = "Button"),
+          width = 2
+        ),
+        mainPanel(
+          plotlyOutput("plot")
+        )
       )
     )
   ),
@@ -28,14 +27,14 @@ ui <- navbarPage(title = 'Patent Analytics',
        tabsetPanel(
          tabPanel(title = 'Inputs',
                   wellPanel(
-                    textInput(inputId = 'first_input', label = 'First Input', width = '200px', placeholder = 'Enter text here'),
-                    textInput(inputId = 'second_input', label = 'Second Input', width = '200px', placeholder = 'Enter text here'),
-                    textInput(inputId = 'third_input', label = 'Third Input', width = '200px', placeholder = 'Enter text here'),
+                    textInput(inputId = 'fourth_input', label = 'First Input', width = '200px', placeholder = 'Enter text here'),
+                    textInput(inputId = 'fifth_input', label = 'Second Input', width = '200px', placeholder = 'Enter text here'),
+                    textInput(inputId = 'sixth_input', label = 'Third Input', width = '200px', placeholder = 'Enter text here'),
                     actionButton(inputId = "my_button", label = "Button")
                   )),
          tabPanel(title = 'Outputs',
                   wellPanel(
-                    plotlyOutput(outputId = 'my_output')
+                    plotlyOutput(outputId = 'second_output')
                   )),
        )
      )
