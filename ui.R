@@ -9,10 +9,9 @@ ui <- navbarPage(title = 'Patent Analytics',
       h1('First'),
       sidebarLayout(
         sidebarPanel(
-          selectInput(inputId = "cpc_select", label = "Select a CPC code:", choices = distinct_cpc_codes),
-          textInput(inputId = 'first_input', label = 'First Input', width = '200px', placeholder = 'Enter text here'),
-          textInput(inputId = 'third_input', label = 'Third Input', width = '200px', placeholder = 'Enter text here'),
-          actionButton(inputId = "my_button", label = "Button"),
+          selectInput(inputId = "cpc_select_1", label = "Select a CPC code:", choices = distinct_cpc_codes),
+          textInput(inputId = 'cpc_subclass_1', label = 'Subclass (delineated by comma)', width = '200px', placeholder = 'Enter subclass codes'),
+          actionButton(inputId = "create_graph", label = "Create Graph"),
           width = 2
         ),
         mainPanel(
@@ -22,24 +21,20 @@ ui <- navbarPage(title = 'Patent Analytics',
     )
   ),
   tabPanel(title = 'Second',
-    fluidPage(
-       h1('Second'),
-       tabsetPanel(
-         tabPanel(title = 'Inputs',
-                  wellPanel(
-                    textInput(inputId = 'fourth_input', label = 'First Input', width = '200px', placeholder = 'Enter text here'),
-                    textInput(inputId = 'fifth_input', label = 'Second Input', width = '200px', placeholder = 'Enter text here'),
-                    textInput(inputId = 'sixth_input', label = 'Third Input', width = '200px', placeholder = 'Enter text here'),
-                    actionButton(inputId = "my_button", label = "Button")
-                  )),
-         tabPanel(title = 'Outputs',
-                  wellPanel(
-                    plotlyOutput(outputId = 'second_output')
-                  )),
-       )
-     )
-  ),
-                 
+       fluidPage(
+         h1('First'),
+         sidebarLayout(
+           sidebarPanel(
+             selectInput(inputId = "cpc_select_2", label = "Select a CPC code:", choices = distinct_cpc_codes),
+             textInput(inputId = 'cpc_subclass_2', label = 'Subclass (delineated by comma)', width = '200px', placeholder = 'Enter subclass codes'),
+             actionButton(inputId = "create_map", label = "Create map"),
+             width = 2
+           ),
+           mainPanel(
+             plotlyOutput("map")
+           )
+         )
+       )        
 )
 
 # ui <- fluidPage(
