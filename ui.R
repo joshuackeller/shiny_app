@@ -9,9 +9,8 @@ ui <- navbarPage(title = 'Patent Analytics',
       h1('First'),
       sidebarLayout(
         sidebarPanel(
-          selectInput(inputId = "cpc_select", label = "Select a CPC code:", choices = distinct_cpc_codes),
-          textInput(inputId = 'first_input', label = 'First Input', width = '200px', placeholder = 'Enter text here'),
-          textInput(inputId = 'third_input', label = 'Third Input', width = '200px', placeholder = 'Enter text here'),
+          selectInput(inputId = "cpc_select", label = "CPC Class", choices = distinct_cpc_codes),
+          selectInput(inputId = 'cpc_subclass_select', label = 'CPC Subclass', choices = NULL),
           actionButton(inputId = "my_button", label = "Button"),
           width = 2
         ),
