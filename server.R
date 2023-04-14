@@ -18,6 +18,8 @@ server <- function(input, output, session) {
         distinct(cpc_subclass))$cpc_subclass
     )
     
+    subclass_options <- c("None", subclass_options)
+    
     
     # Update the choices for cpc_subclasses
     updateSelectInput(session, "cpc_subclass_select", choices = subclass_options)
@@ -29,7 +31,7 @@ server <- function(input, output, session) {
   data <- reactive({
     req(input$cpc_select)
     
-    if(is.null(input$cpc_subclass_select)) {
+    if(input$cpc_subclass_select == "None") {
       filtered_data <- complete_data %>%
         filter(cpc_class == input$cpc_select) %>%
         filter(disambig_assignee_organization!='') %>%
