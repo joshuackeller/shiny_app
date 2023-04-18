@@ -62,7 +62,7 @@ server <- function(input, output, session) {
       layout(
         xaxis = list(categoryorder = "total descending", title = "Organization"),
         yaxis = list(title = "Total")
-        )
+      )
   })
   
   
@@ -265,7 +265,6 @@ server <- function(input, output, session) {
   output$table_data <- renderDT({
     datatable(table_data(), options = list(pageLength = 25, scrollX = T))
   })
-  
   
   
   
